@@ -67,12 +67,12 @@ let lanceBoucleJeux = () => {
 
         nombreMots = listPhrases.length; 
 
-        for (let i = 0; i < listDesMots.length; i++){
-            let mot_proposer = prompt(listPhrases[i]);
-            if (mot_proposer === listPhrases[i]) {
+        for (let i = 0; i < listPhrases.length; i++){
+            let phrase_proposer = prompt(listPhrases[i]);
+            if (phrase_proposer === listPhrases[i]) {
                 score++;
             } else {
-                error += errorCounter(mot_proposer, listPhrases[i]);
+                error += errorCounter(phrase_proposer, listPhrases[i]);
             }
         }
     }
