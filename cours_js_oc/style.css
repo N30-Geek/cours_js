@@ -123,3 +123,23 @@ main h1{
     color: white;
     cursor: pointer;
 }
+
+.zoneScore{
+    color: #e2f5fc9e;
+    text-shadow: 1px 1px 0px rgba(6, 44, 57, 0.533);
+    text-shadow: 2px 2px 0px rgba(2, 33, 40, 0.344);
+
+}
+.zoneScore span{
+    color: white;
+    font-weight: bold;
+}
+
+footer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #5ac4f6;
+    font-size: 12px;
+
+}
