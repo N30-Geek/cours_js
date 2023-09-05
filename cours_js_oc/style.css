@@ -2,110 +2,124 @@
     padding: 0;
     margin: 0;
     box-sizing: border-box;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-family: Arial, Helvetica, sans-serif;
+    outline: none;
     transition: 0.3s ease;
-}   
-
+}
 
 html{
     display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+  
+}
+
+body{
+    display: flex;
+    align-content: center;
     justify-content: center;
     flex-direction: column;
     height: 100vh;
+}
+
+main{
+    background-color: #5ac4f6;
+    width: 35em;
     padding: 2em;
-}
-body{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-}
-
-.container, .pop-up-word{
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    border: 1px solid #4559b0;
-    padding: 1em;
-    border-radius: 1em;
-    width: max-content;
-    box-shadow: 0 0 50px rgba(168, 168, 168, 0.665);
-}
-
-.pop-up-word{
-    display: none;
-    width: max-content;
-    padding: 5px;
-    margin-left: 0;
-    margin: 5px;
-    font-size: 11px;
-    box-shadow: 0 0 80px rgba(32, 32, 32, 0.883);
-    z-index: 100;
-    float: left;
-    background-color: rgb(192, 188, 188);
-    border:1px solid white;
-}
-.container h2{
-    text-align: center;
-    font-size: 20px;
-    text-transform: uppercase;
-    color: #4559b0;
-
-}
-
-.container .box{
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: rgba(206, 94, 94, 0.564);
-    height: 3em;
-    margin-top: 1em;
-    width: 20em;
-    padding: 1em;
-    border-radius: 5px;
-    box-shadow: 0  0 20px  rgba(168, 168, 168, 0.665);
-}
-.container .box:nth-child(2){
-    background-color: #4559b0;
-}
-.container .box .inputs {
-
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-
-}
-.container .box .inputs input{
-    width: 100%;
-    height:  2em;
-    border: none;
-    padding: 5px;
-    color: rgb(64, 140, 165);
-    outline: none;
-    border-radius: 2.5px;
-}
-.container .box .results{
-    display: flex;
-    align-items: center;
     justify-content: space-between;
-    height: 2em;
-    width: 100%;
+    align-items: center;
+    border-radius: 1em;
+    height: 20em;
+    box-shadow: 0px 5px 0px #00a1d8;
+    margin-bottom: 5em;
+}
+
+main h1{
+    text-align: center;
+    color:  white;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: 40px;
+    margin-top: -25px;
+    margin-bottom: 0.5em;
+}
+.zoneOptions {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 
-.box .results span{
-    font-size: 13px;
-    color: rgb(220, 220, 220);
-    text-align: center;
+.zoneOptions p{
+    color: rgb(223, 251, 252);
+    margin-bottom: 5px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
-.box .results span .span{
-    position: relative;
-    background-color: white;
-    width: 4em;
-    height: 1.5em;
-    border-radius: 5px;
-    margin-top: 5px;
-    text-align: center;
+.zoneOptions .optionSource{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    cursor: pointer;
+}
+.zoneOptions .optionSource input{
+    cursor: pointer;
+}
+
+.zoneOptions .optionSource label{
+    color:#ffffffa5;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    margin-left: 10px;
+    margin-right: 10px;
+    font-weight: bold;
+}
+
+.zoneProposition{
+    font-size: 25px;
+    word-spacing: 12px;
+    color: yellow;
+}
+.zoneSaisie{
+    display: flex;
+    flex-direction: column;
+    width: 100%;;
+}
+
+.zoneSaisie input{
+    height: 3em;
+    border-radius: 0.5em;
+    margin-block: 1em;
+    border: none;
+    box-shadow: 0px 10px 0px rgba(0, 162, 216, 0.43);
+    font-size:1em;
+    padding-inline: 1em;
+
+}
+.zoneSaisie input:hover{
+    border: 1px solid white;
+    background-color: #d4f9ff;
+}
+.zoneSaisie input::placeholder{
+    color: rgb(169, 167, 167);
+}
+
+.zoneSaisie button{
+    height: 2.5em;
+    width: 10em;
+    align-self: center;
+    background-color: rgb(255, 255, 255);
+    border: none;
+    border-radius: 0.5em;
+    margin-bottom: 1.5em;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+.zoneSaisie button:hover{
+    background-color: #00a1d8;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.206);
+    border: 1px solid white;
+    color: white;
+    cursor: pointer;
 }

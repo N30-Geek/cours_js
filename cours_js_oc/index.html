@@ -1,13 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="style.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cours javascript</title>
 </head>
+
 <body>
-    <img id="premiereImage" src="image.jpg" alt="Ceci est une image de test" class="photo flexCenter">
+    <main>
+        <h1>AzerType</h1>
+        <div class="zoneOptions">
+            <p>choisissez votre option et tapez la prochiane</p>
+
+            <div class="optionSource">
+                <input type="radio" name="optionSource" id="optionSource">
+                <label for="optionSource">Mots</label>
+                <input type="radio" name="optionSource" id="optionSource">
+                <label for="optionSource">Phrases</label>
+            </div>
+        </div>
+
+        <div class="zoneProposition">
+            Azerty
+        </div>
+
+        <div class="zoneSaisie">
+
+            <input type="text" id="inputEcriture" name="inputEcriture" placeholder="enter votre proposition ici">
+            <button id="btnValiderMot">Valider</button>
+        </div>
+
+        <div class="zoneScore">
+            Votre score : <span>0</span>
+        </div>
+
+    </main>
+    <footer>
+        &copy;2023 @copyright : geekhouse
+    </footer>
 
     <!-- Les fichier scripts externes du programme -->
 
@@ -16,4 +48,5 @@
     <script src="scripts/main.js"></script>
 
 </body>
+
 </html>

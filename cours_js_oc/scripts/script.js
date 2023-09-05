@@ -14,7 +14,12 @@ let errorCounter = (word, computerWord) => {
 
 // La fonction qui affiche le resultat de l'utilisateur
 let afficherResultat = (score, wordLength, nombreErreur) => {
-    console.log(`Score: ${score} | Nombre de Mots : ${wordLength} | Nombre des erreurs : ${nombreErreur}`);
+    const zoneScore = document.querySelector(".zoneScore");
+    const zoneScoreSpan = document.querySelector(".zoneScore span");
+    let resultat = `Score : <span>${score}</span> | Nbt des mots <span>${wordLength}</span> | Nbr erreurs : <span>${nombreErreur}</span>`;
+
+    zoneScore.innerHTML = resultat;
+    
 }
 
 // cette fonction demande à l'utilisateur de choisir s'il veux travailler avec les mots ou des phrase enitères
