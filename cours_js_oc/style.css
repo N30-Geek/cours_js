@@ -3,16 +3,22 @@
     margin: 0;
     box-sizing: border-box;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    transition: 3s ease;
+    transition: 0.3s ease;
 }   
 
 
-body{
+html{
     display: flex;
     justify-content: center;
     flex-direction: column;
     height: 100vh;
     padding: 2em;
+}
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
 
 .container, .pop-up-word{
@@ -28,6 +34,7 @@ body{
 }
 
 .pop-up-word{
+    display: none;
     width: max-content;
     padding: 5px;
     margin-left: 0;

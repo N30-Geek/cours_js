@@ -1,6 +1,5 @@
 // Listes des mots et des phrases
 
-
 let listDesMots = [
     "Cachalot",
     "Pétunia",
