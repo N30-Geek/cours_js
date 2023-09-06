@@ -26,17 +26,13 @@ let afficherResultat = (score, wordLength, nombreErreur) => {
 
 let choisirPhraseOuMot = () => {
     let ask = true; // le boolean ask pour maintenir la boucle
-
-    while (ask) {
-        let choix = prompt("Mot ou Phrase :");  // variable de retourn de choix de l'utilisateur entre mots et phrases
-
-        if (choix === "mots") {
-            return choix;
+    let optionProposition = document.querySelector(".zoneProposition");
+    
+    optionProposition.forEach(option => {
+        if (option.checked === true) {
+            console.log(option);
         }
-        if (choix === "phrases") {
-            return choix;
-        }
-    }
+    });
 }
 
 
@@ -49,6 +45,8 @@ let lanceBoucleJeux = () => {
     let score = 0;  // La variable contenant le  score de l'utilisateur
     let error = 0;  // la variable contenant le nombres des erreur commuse par l'utilisateur
     let nombreMots = 0;
+    let zoneProposition = document.querySelector(".zoneProposition");
+    let monBouton = document.getElementById("monBouton");
 
     // traitement de mots
 
@@ -56,7 +54,10 @@ let lanceBoucleJeux = () => {
 
         nombreMots = listDesMots.length;
         for (let i = 0; i < listDesMots.length; i++){
-            let mot_proposer = prompt(listDesMots[i]);
+
+            zoneProposition.textContent(listDesMots[i]);
+            mot_proposer = champs.value;
+
             if (mot_proposer == listDesMots[i]) {
                 score++;
             } else {
@@ -93,3 +94,20 @@ let lancerJeu = () => {
     afficherResultat(resultats[0], resultats[1], resultats[2]);
 
 }
+
+// creation de l'action de bouton
+
+monBouton.addEventListener("click", () => {
+       console.log("hello you type this")
+});
+
+
+const champs = document.querySelector("input");
+champs.addEventListener("keydown", (e) => {
+    if (e.key === "Enter" && champs.value !== "") {
+        console.log("hello you type this");
+        champs.value = "";
+    } else {
+        e.preventDefault;
+    }
+})
