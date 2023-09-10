@@ -1,113 +1,143 @@
-// projet javascript creation de fichier
+/***
+ * Mise au propre du code du chapitre 4 partie 2 du cours de la programmation js
+ * code ecrit par G33kn30 C. libre de droit
+ */
 
 
-// Cette fonction cote tout les erreurs de caractère comise par utilisateur
-let errorCounter = (word, computerWord) => {
-    let errorLength = 0;
-    for (let i = 0; i < word.length; i++){
-        if (word[i] != computerWord[i]){
-            errorLength += 1;
-        } 
-    }
-    return errorLength;
+//#############################################################
+
+let afficheResultat = (score, nbr_de_mots, nbr_de_erreurs) => {
+    const span_zone_score = document.querySelectorAll(".zoneScore span");
+    
+    // affichage de résultat
+    span_zone_score[0].innerText = score;
+    span_zone_score[1].innerText = nbr_de_mots
+    span_zone_score[2].innerText = nbr_de_erreurs;
 }
 
-// La fonction qui affiche le resultat de l'utilisateur
-let afficherResultat = (score, wordLength, nombreErreur) => {
-    const zoneScore = document.querySelector(".zoneScore");
-    const zoneScoreSpan = document.querySelector(".zoneScore span");
-    let resultat = `Score : <span>${score}</span> | Nbt des mots <span>${wordLength}</span> | Nbr erreurs : <span>${nombreErreur}</span>`;
-
-    zoneScore.innerHTML = resultat;
+let gameReset = () => {
+    const span_zone_score = document.querySelectorAll(".zoneScore span");
     
+    // affichage de résultat
+    span_zone_score[0].innerText = "";
+    span_zone_score[1].innerText = "";
+    span_zone_score[2].innerText = "";
 }
+//#############################################################
+// la fonction permettant de compter les erreur dans un mots saisie pâr l'utilisateur
+let play = () => {
+    gameReset()
+    let btn = document.querySelector(".play");
+    let zone_input = document.querySelector(".input");
+    zone_input.disabled = true;
+    zone_input.placeholder = "Veuillez clique sur la touche play"
 
-// cette fonction demande à l'utilisateur de choisir s'il veux travailler avec les mots ou des phrase enitères
-
-let choisirPhraseOuMot = () => {
-    let ask = true; // le boolean ask pour maintenir la boucle
-    let optionProposition = document.querySelector(".zoneProposition");
-    
-    optionProposition.forEach(option => {
-        if (option.checked === true) {
-            console.log(option);
+    btn.addEventListener("click", () => {
+        gameInit();
+        document.querySelector(".input").disabled = false;
+    });
+}
+let compteurErreur = (mot_utilisateur, proposition) => {
+    let nbr_erreur = 0
+    for (let i = 0; i < mot_utilisateur.length; i++){
+        if (mot_utilisateur[i] === proposition[i]){
+            continue;
+        } else {
+            nbr_erreur++;
         }
+    }
+    return nbr_erreur;
+}
+
+let afficheProposition = (proposition) => {
+    const zone_proposition = document.querySelector(".zoneProposition");
+    zone_proposition.innerText = proposition;
+}
+
+let getListWord = () => {
+    let option = document.querySelectorAll("#optionSource");
+    
+    
+    if (option[0].checked == true) {
+        return listDesMots;
+    }else if (option[1].checked == true) {
+        return listPhrases;
+    } else {
+        return undefined;
+    }
+}
+
+//#############################################################
+// Cette fonction recommande le jeux
+
+let recommencer = () => {
+    let btn_recommancer = document.querySelector(".recommencer");
+    let input_zone = document.querySelector(".input");
+    input_zone.disabled = false;
+
+    btn_recommancer.addEventListener('click', ()=>{
+        gameInit();
     });
 }
 
 
-// La fonction boucle principale de jeux
-// et retour les score du jeux, le nombre des mots tapez, et le nombre des erreurs commise
+// foncittion pricniaple du jeux
+//#############################################################
 
-let lanceBoucleJeux = () => {
+let gameInit = () => {
     
-    let choix_phrase_ou_mots = choisirPhraseOuMot();
-    let score = 0;  // La variable contenant le  score de l'utilisateur
-    let error = 0;  // la variable contenant le nombres des erreur commuse par l'utilisateur
-    let nombreMots = 0;
-    let zoneProposition = document.querySelector(".zoneProposition");
-    let monBouton = document.getElementById("monBouton");
+    let score = 0;
+    let compteur = 0;
+    let nbr_de_mots = getListWord().length;
+    let nbr_erreurs = 0;
+    const input_zone = document.querySelector(".input");
+    
 
-    // traitement de mots
+    input_zone.value = '';
 
-    if (choix_phrase_ou_mots == "mots") {
 
-        nombreMots = listDesMots.length;
-        for (let i = 0; i < listDesMots.length; i++){
+    afficheProposition(getListWord()[compteur]);
 
-            zoneProposition.textContent(listDesMots[i]);
-            mot_proposer = champs.value;
+    input_zone.addEventListener("keydown", (e) => {
 
-            if (mot_proposer == listDesMots[i]) {
+        if (e.key === "Enter" && input_zone.value !== "") {
+            if (input_zone.value !== "" && input_zone.value === getListWord()[compteur]) {
                 score++;
             } else {
-                error += errorCounter(mot_proposer, listDesMots[i]);
+                nbr_erreurs += compteurErreur(input_zone.value, getListWord()[compteur]);
             }
-        }
-    }
-
-    // Traitement de phrases
-    if (choix_phrase_ou_mots === "phrases") {
-
-        nombreMots = listPhrases.length;
-
-        for (let i = 0; i < listDesMots.length; i++){
-            let mot_proposer = prompt(listPhrases[i]);
-            if (mot_proposer === listPhrases[i]) {
-                score++;
+        compteur++;
+            afficheResultat(score, compteur, nbr_erreurs);
+            input_zone.value = '';
+            
+            // vérification si le compteur dépasser la longueur de liste de mots
+            // je désactive la button de validantion et j'affiche le msg " Le jeux est términé"
+            if (getListWord()[compteur] === undefined) {
+                let zone_proposition = document.querySelector(".zoneProposition");
+                zone_proposition.classList.add("end-game");
+                afficheProposition("Le jeu est fini");
+                input_zone.disabled = true;
             } else {
-                error += errorCounter(mot_proposer, listPhrases[i]);
+                afficheProposition(getListWord()[compteur]);
             }
         }
-    }
-
-
-    return [score, nombreMots, error]; // valeur de retourne est une listes (contenant le score, nombreDeMots, erreur)
-   
+    });
+    
+    afficheResultat(score, nbr_de_mots, compteur);
 }
 
-// LA FONCTION PRINCIPALE QUI LENCE LE JEUX
+//#############################################################
+// gameInit();
 
-let lancerJeu = () => {
-
-    let resultats = lanceBoucleJeux();
-    afficherResultat(resultats[0], resultats[1], resultats[2]);
-
-}
-
-// creation de l'action de bouton
-
-monBouton.addEventListener("click", () => {
-       console.log("hello you type this")
-});
+// const input_zone = document.querySelector(".input");
+// input_zone.value = "";
+// input_zone.addEventListener("keydown", (e) => {
+    //     if (e.key == "Enter") {
+        
+//         input_zone.disabled = true;
+//         console.log(input_zone.value)
+//         input_zone.value = "";
+//     }
 
 
-const champs = document.querySelector("input");
-champs.addEventListener("keydown", (e) => {
-    if (e.key === "Enter" && champs.value !== "") {
-        console.log("hello you type this");
-        champs.value = "";
-    } else {
-        e.preventDefault;
-    }
-})
+// });

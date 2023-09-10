@@ -15,26 +15,23 @@
             <p>choisissez votre option et tapez la prochiane</p>
 
             <div class="optionSource">
-                <input type="radio" name="optionSource" id="optionSource">
+                <input type="radio" name="optionSource" id="optionSource" checked>
                 <label for="optionSource">Mots</label>
                 <input type="radio" name="optionSource" id="optionSource">
                 <label for="optionSource">Phrases</label>
             </div>
         </div>
 
-        <div class="zoneProposition">
-            Azerty
-        </div>
+        <div class="zoneProposition">_ _ _ _ _ _ _ _ </div>
 
         <div class="zoneSaisie">
 
             <input class="input" type="text" id="inputEcriture" name="inputEcriture"
                 placeholder="enter votre proposition ici">
-            <button id="monBouton">Valider</button>
+            <button class="play">Play</button>
         </div>
-
         <div class="zoneScore">
-            Votre score : <span>0</span> | Nbr mots: <span>0</span> | Nbr erreur: <span>0</span>
+            Votre score : <span>0</span> | Nbr mots: <span>0</span> | Nbr erreur: <span class="error">0</span>
         </div>
 
     </main>
@@ -44,9 +41,9 @@
 
     <!-- Les fichier scripts externes du programme -->
 
-    <script src="scripts/config.js"></script>
-    <script src="scripts/script.js"></script>
-    <script src="scripts/main.js"></script>
+    <script src="scripts/config.js" defer></script>
+    <script src="scripts/script.js" defer></script>
+    <script src="scripts/main.js" defer></script>
 
 </body>
 
